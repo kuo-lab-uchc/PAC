@@ -1,4 +1,4 @@
-# Proteomic Aging clock 
+# Proteomic Aging Clock 
 ## Setup
 Users are required to download and install R but no R package is needed to calculate the PAC proteomic age.
 
