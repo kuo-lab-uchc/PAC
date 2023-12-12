@@ -1,13 +1,14 @@
 
 
-#proteomic_age: This function is used to calculate the proteomic age 
+# pac_proteomic_age: This function is used to calculate the PAC proteomic age 
 
-proteomic_age <- function(data){
-  shape=0.148766187078631 #shape from gompertz model with age and protein   
-  rate=0.000231560557596016#rate from gompertz model with age and protein
-  shape0=0.1200806#shape from gompertz model with age only     
-  rate0=0.000004885383#rate from gompertz model with age only  
-  beta_age=0.1087932#coefficient from gompertz model with age only                
+pac_proteomic_age <- function(data){
+  
+  shape=0.148766187078631 #shape from gompertz model with age and 128 selected proteins   
+  rate=0.000231560557596016 #rate from gompertz model with age and 128 selected proteins
+  shape0=0.1200806 #shape from gompertz model with age only     
+  rate0=0.000004885383 #rate from gompertz model with age only  
+  beta_age=0.1087932 #coefficient associated with age in the gompertz model with age only                
   
   beta_age_protein=c(0.029353964,0.099491261,-0.128153586,0.097070584,
                      -0.005514185,0.191335791,-0.276924813,0.034399365,
@@ -41,7 +42,7 @@ proteomic_age <- function(data){
                      0.123681499,0.118673810,0.031169845,0.063336979,
                      0.034805482,-0.098905845,-0.144461235,-0.127344390,
                      -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440
-  )#coefficient from gompertz model with age and protein
+  ) #coefficients associated with age and proteins in the gompertz model with age and 128 selected proteins
   
   names_beta=c("age_recruitment","ada2", "adamts13", "adamts16", "adgrg2",
                "adm", "ager", "agr2", "apoe", "areg", "art3", "bag3",
@@ -61,16 +62,19 @@ proteomic_age <- function(data){
                "scgb1a1", "scgb3a1", "sdc4", "selenop", "sell", "sez6l", 
                "sfrp1", "sftpd", "skap1", "slitrk1", "slitrk2", "sost", "spock1",
                "spon1", "spp1", "tff3", "tnc", "tnfrsf10b", "tnfrsf6b", 
-               "tnn", "tnr", "tpk1", "ttr", "txndc15", "vgf", "wfdc2", "xg")#names from gompertz model with age and protein
+               "tnn", "tnr", "tpk1", "ttr", "txndc15", "vgf", "wfdc2", "xg") # variable names corresponding to the coefficients in "beta_age_protein"
   
-  #match the input data name and coefficient name given
+  # match the variable names in the input data name and "names_beta"
   beta_age_protein=beta_age_protein[match(rownames(data), names_beta)]
-  #b(x)=b*exp(x*beta)
+  
+  # b(x)=b*exp(x*beta)
   b_x<- t(as.matrix(data))%*%as.matrix(beta_age_protein)
   rate_new <- rate*exp(b_x)
-  #10 year risk 
+  
+  # 10-year mortality risk 
   cdf_10_year=1-exp(-(rate_new/shape)*(exp(shape*10)-1))
-  #calculate the proteomic age
+  
+  # PAC proteomic age
   proteomic_age=(1/beta_age)*log(shape0*log(1-cdf_10_year)/(rate0*(1-exp(10*shape0))))
   colnames(proteomic_age)="proteomic age"
   return(proteomic_age)
