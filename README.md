@@ -1,8 +1,8 @@
 # Proteomic Aging clock 
 ## Setup
-You need to download and install R but no R package is required for the calculation of PAC.
+Users are required to download and install R but no R package is needed to calculate the PAC proteomic age.
 ## Examples
-Example data can be found in data folder including 5 individuals with 128 proteins and chronological age. You can get PAC by running
+An example dataset can be found in the data folder, including 5 individuals with chronological age and 128 proteins in PAC.
 
 ```
 data=read.csv("example_data.csv",row.names = 1)
