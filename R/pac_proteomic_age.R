@@ -3,10 +3,10 @@
 
 pac_proteomic_age <- function(data){
   
-  shape=0.148766187078631 #shape from gompertz model with age and 128 selected proteins   
-  rate=0.000231560557596016 #rate from gompertz model with age and 128 selected proteins
-  shape0=0.1200806 #shape from gompertz model with age only     
-  rate0=0.000004885383 #rate from gompertz model with age only  
+  shape=0.148766187078631 #shape from the gompertz model with age and 128 selected proteins   
+  rate=0.000231560557596016 #rate from the gompertz model with age and 128 selected proteins
+  shape0=0.1200806 #shape from the gompertz model with age only     
+  rate0=0.000004885383 #rate from the gompertz model with age only  
   beta_age=0.1087932 #coefficient associated with age in the gompertz model with age only                
   
   beta_age_protein=c(0.029353964,0.099491261,-0.128153586,0.097070584,
@@ -63,7 +63,7 @@ pac_proteomic_age <- function(data){
                "spon1", "spp1", "tff3", "tnc", "tnfrsf10b", "tnfrsf6b", 
                "tnn", "tnr", "tpk1", "ttr", "txndc15", "vgf", "wfdc2", "xg") # variable names corresponding to the coefficients in "beta_age_protein"
   
-  # match the variable names in the input data name and "names_beta"
+  # match the variable names in the input data and "names_beta"
   beta_age_protein=beta_age_protein[match(rownames(data), names_beta)]
   
   # b(x)=b*exp(x*beta)
