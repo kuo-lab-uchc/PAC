@@ -10,7 +10,7 @@ pac_proteomic_age <- function(data){
   beta_age=0.1087932 # coefficient associated with age in the Gompertz model with age only                
   
   # age and 128 proteins to calculate the PAC proteomic age
-  var_age_protein=c("age","ada2", "adamts13", "adamts16", "adgrg2",
+  predictors=c("age","ada2", "adamts13", "adamts16", "adgrg2",
                "adm", "ager", "agr2", "apoe", "areg", "art3", "bag3",
                "bcam", "bcan", "brk1", "c7", "ca14", "ca4", "calca", 
                "cblif", "cd248", "cd34", "cdcp1", "ceacam5", "ceacam6", 
@@ -31,7 +31,7 @@ pac_proteomic_age <- function(data){
                "tnn", "tnr", "tpk1", "ttr", "txndc15", "vgf", "wfdc2", "xg")
   
   # Gompertz coefficients associated with age and 128 proteins in "var_age_protein"
-  beta_age_protein=c(0.029353964,0.099491261,-0.128153586,0.097070584,
+  betas=c(0.029353964,0.099491261,-0.128153586,0.097070584,
                      -0.005514185,0.191335791,-0.276924813,0.034399365,
                      -0.075457263,-0.005805245,-0.215725117,-0.064391821,
                      0.194400347,-0.014944780,0.099807081,0.050241198,
@@ -65,13 +65,13 @@ pac_proteomic_age <- function(data){
                      -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440) 
   
   colnames(data) <- tolower(colnames(data)) # convert column names of the data to lowercase only
-  data <- data[,which(colnames(data)%in%var_age_protein)] # keep predictors columns only in the data
-  if(sum(!var_age_protein%in%colnames(data))==0){
-  # match the variable names in "var_age_protein" and the input data
-  beta_age_protein=beta_age_protein[match(colnames(data), var_age_protein)]
+  data <- data[,which(colnames(data)%in%predictors)] # keep predictors columns only in the data
+  if(sum(!predictors%in%colnames(data))==0){
+  # match the variable names in "predictors" and the input data
+  beta_age_protein=beta_age_protein[match(colnames(data), predictors)]
   
   # b(x)=b*exp(x*beta)
-  b_x <- as.matrix(data)%*%as.matrix(beta_age_protein)
+  b_x <- as.matrix(data)%*%as.matrix(betas)
   rate_new <- rate*exp(b_x)
   
   # 10-year mortality risk 
