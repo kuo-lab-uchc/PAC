@@ -62,8 +62,7 @@ pac_proteomic_age <- function(data){
                      -0.104542859,-0.123590138,0.164663205,0.130347786,
                      0.123681499,0.118673810,0.031169845,0.063336979,
                      0.034805482,-0.098905845,-0.144461235,-0.127344390,
-                     -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440
-  ) 
+                     -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440) 
   
   colnames(data) <- tolower(colnames(data)) # convert column names of the data to lowercase only
   data <- data[,which(colnames(data)%in%var_age_protein)] # keep predictors columns only in the data
