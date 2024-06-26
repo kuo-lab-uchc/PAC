@@ -1,4 +1,4 @@
-# Proteomic Aging Clock 
+# Proteomic Aging Clock (PAC)
 ## Publication
 Kuo CL, Chen Z, Liu P, Pilling LC, Atkins JL, Fortinsky RH, Kuchel GA, Diniz BS. Proteomic aging clock (PAC) predicts age-related outcomes in middle-aged and older adults. Aging Cell. 2024 May 15:e14195. doi: 10.1111/acel.14195. Epub ahead of print. PMID: 38747160.
 
