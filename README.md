@@ -6,7 +6,7 @@ Kuo CL, Chen Z, Liu P, Pilling LC, Atkins JL, Fortinsky RH, Kuchel GA, Diniz BS.
 Users are required to download and install R but no R package is needed to calculate the PAC proteomic age.
 
 ## Example
-An example dataset (pac_example_data.csv") can be found in the data folder, including five individuals with chronological age and 128 proteins in PAC. The R code below shows you how to load the function in "pac_proteomic_age.R" to calculate the PAC proteomic ages using the input data from the five individuals.
+The R code below shows you how to load the "pac_proteomic_age" function in "pac_proteomic_age.R" to calculate PAC proteomic ages for five subjects with input data in "pac_example_data.csv".
 
 ```
 source("pac_proteomic_age.R")
