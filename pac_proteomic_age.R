@@ -68,7 +68,7 @@ pac_proteomic_age <- function(data){
   data <- data[,which(colnames(data)%in%predictors)] # keep predictors columns only in the data
   if(sum(!predictors%in%colnames(data))==0){
   # match the variable names in "predictors" and the input data
-  beta_age_protein=beta_age_protein[match(colnames(data), predictors)]
+  betas=betas[match(colnames(data), predictors)]
   
   # b(x)=b*exp(x*beta)
   b_x <- as.matrix(data)%*%as.matrix(betas)
