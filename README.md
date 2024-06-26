@@ -7,7 +7,7 @@ An example dataset (pac_example_data.csv") can be found in the data folder, incl
 
 ```
 source("pac_proteomic_age.R")
-pac_input=read.csv("pac_example_data.csv",row.names = 1)
+pac_input=read.csv("pac_example_data.csv")
 pac_proteomic_age(pac_input)
 
 ```
