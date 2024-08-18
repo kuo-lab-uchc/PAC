@@ -3,10 +3,10 @@
 
 pac_proteomic_age <- function(data){
   
-  shape=0.148766187078631 # shape estimate from the Gompertz model with age and 128 selected proteins   
-  rate=0.000231560557596016 # rate from the Gompertz model with age and 128 selected proteins
+  shape=0.148766187078631 # shape estimate from the Gompertz model with age and 128 proteins selected by a LASSO Cox regression model   
+  rate=0.000231560557596016 # rate from the Gompertz model with age and 128 proteins selected by a LASSO Cox regression model
   shape0=0.1200806 # shape from the Gompertz model with age only     
-  rate0=0.000004885383 #rate from the Gompertz model with age only  
+  rate0=0.000004885383 # rate from the Gompertz model with age only  
   beta_age=0.1087932 # coefficient associated with age in the Gompertz model with age only                
   
   # age and 128 proteins to calculate the PAC proteomic age
