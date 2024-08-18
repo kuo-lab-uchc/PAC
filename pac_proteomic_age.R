@@ -30,7 +30,7 @@ pac_proteomic_age <- function(data){
                "spon1", "spp1", "tff3", "tnc", "tnfrsf10b", "tnfrsf6b", 
                "tnn", "tnr", "tpk1", "ttr", "txndc15", "vgf", "wfdc2", "xg")
   
-  # Gompertz coefficients associated with age and 128 proteins in "var_age_protein"
+  # Gompertz coefficients associated with age and 128 proteins in "predictors"
   betas=c(0.029353964,0.099491261,-0.128153586,0.097070584,
                      -0.005514185,0.191335791,-0.276924813,0.034399365,
                      -0.075457263,-0.005805245,-0.215725117,-0.064391821,
@@ -64,9 +64,10 @@ pac_proteomic_age <- function(data){
                      0.034805482,-0.098905845,-0.144461235,-0.127344390,
                      -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440) 
   
-  colnames(data) <- tolower(colnames(data)) # convert column names of the data to lowercase
+  colnames(data) <- tolower(colnames(data)) # convert the column names of "predictors" to lowercase
   data <- data[,which(colnames(data)%in%predictors)] # keep predictors only in the data
   if(sum(!predictors%in%colnames(data))==0){
+    
   # match the variable names in "predictors" and the input data
   betas=betas[match(colnames(data), predictors)]
   
