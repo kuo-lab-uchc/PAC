@@ -82,8 +82,8 @@ pac_proteomic_age <- function(data){
   colnames(proteomic_age)="PAC proteomic age"
   return(proteomic_age)
   }else{  
-    cat("Missing predictors:\n",predictors[which(!predictors%in%colnames(data)[-1])])
-    }
+    cat("Missing predictors:\n",predictors[which(!predictors%in%colnames(data))])
+  }
 }
 
 
