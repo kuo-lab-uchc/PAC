@@ -79,7 +79,7 @@ pac_proteomic_age <- function(data){
   
   # PAC proteomic age
   proteomic_age=(1/beta_age)*log(shape0*log(1-cdf_10_year)/(rate0*(1-exp(10*shape0))))
-  colnames(proteomic_age)="proteomic age"
+  colnames(proteomic_age)="PAC proteomic age"
   return(proteomic_age)
   }else{  
     cat("Missing predictors:\n",var_age_protein[which(!var_age_protein%in%colnames(data)[-1])])
