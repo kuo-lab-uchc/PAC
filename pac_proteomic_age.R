@@ -64,8 +64,8 @@ pac_proteomic_age <- function(data){
                      0.034805482,-0.098905845,-0.144461235,-0.127344390,
                      -0.020352303,0.079187131,-0.305091894,0.118800770,-0.089338440) 
   
-  colnames(data) <- tolower(colnames(data)) # convert column names of the data to lowercase only
-  data <- data[,which(colnames(data)%in%predictors)] # keep predictors columns only in the data
+  colnames(data) <- tolower(colnames(data)) # convert column names of the data to lowercase
+  data <- data[,which(colnames(data)%in%predictors)] # keep predictors only in the data
   if(sum(!predictors%in%colnames(data))==0){
   # match the variable names in "predictors" and the input data
   betas=betas[match(colnames(data), predictors)]
